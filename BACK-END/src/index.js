@@ -17,7 +17,7 @@ class Server {
     };
 
     routers(){
-        // this.app.use('/pacientes', require(''))
+        this.app.use('/cups', require('./routers/cups.routers'))
     };
 
     listen(){
