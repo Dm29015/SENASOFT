@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+/* PrimeNG */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeng/resources/primeng.min.css";
+
+@import "primeicons/primeicons.css";
+
+
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos globales*/
+html,
+body {
+    background-color: #f0f0f0;
+}
+
+.field-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.field {
+    flex: 1;
+    margin-top: 10px;
+}
+
+.field:last-child {
+    margin-right: 0;
+}
+
+.p-inputtext {
+    margin-top: 5px;
+    padding: 8px !important;
+}
