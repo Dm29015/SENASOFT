@@ -18,10 +18,11 @@ export class AuthService {
 
   getToken(): string | null {
     if (isPlatformBrowser(this.platformId)) {
-      return localStorage.getItem('token');
+      return localStorage.getItem(this.tokenKey); 
     }
     return null;
   }
+  
 
    getUserData(): any {
     const user = localStorage.getItem(this.userKey);
