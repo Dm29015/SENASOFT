@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const socialSecurityController = require("../controller/socialSecurity.Controller");
+const socialSecurityController = require("../controllers/socialSecurity.Controller");
 
 
 const router = Router();
