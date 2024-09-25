@@ -24,7 +24,7 @@ html, body {
 }
 
 .bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #d4fc79, #96e6a1);
+  background: linear-gradient(to bottom right, #CBF8F3, #C4E6FA);
 }
 
 .w-full {
@@ -52,7 +52,7 @@ html, body {
 }
 
 .bg-teal-500 {
-  background-color: #38b2ac;
+  background-color: #14B8A6;
 }
 
 .text-white {

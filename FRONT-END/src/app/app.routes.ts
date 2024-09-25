@@ -6,6 +6,7 @@ import { CupsComponent } from './modules/cups/cups.component';
 
 import { AuthGuard } from './auth/guard';
 import { DetailResultsComponent } from './modules/detail-results/detail-results.component';
+import { ChatComponent } from './views/chat/chat.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,6 +18,8 @@ export const routes: Routes = [
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'cups', component: CupsComponent, canActivate: [AuthGuard]},
       { path: 'detailResult', component: DetailResultsComponent, canActivate: [AuthGuard] },
+      { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
+
     ]
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
