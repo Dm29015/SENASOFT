@@ -1,6 +1,8 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
+import { personModel } from '../modules/person/person.models';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,11 +25,10 @@ export class AuthService {
     return null;
   }
   
-
-   getUserData(): any {
+  getUserData(): Observable<personModel> {
     const user = localStorage.getItem(this.userKey);
-    return user ? JSON.parse(user) : null;
-  } 
+    return of(user ? JSON.parse(user) : null);
+  }
 
   isAuthenticated(): boolean {
     const token = this.getToken();
