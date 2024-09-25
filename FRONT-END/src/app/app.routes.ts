@@ -12,7 +12,9 @@ export const routes: Routes = [
         children: [
           
           { path: 'home', component: HomeComponent },
-          { path: 'cups', component: CupsComponent }
+          { path: 'cups', component: CupsComponent },
+          { path: 'detailResult', component: CupsComponent }
+
 
         //   { path: '', redirectTo: 'crud', pathMatch: 'full' },
           // { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirigir a login si no hay ninguna ruta
