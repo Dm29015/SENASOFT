@@ -17,6 +17,8 @@ class Server {
     };
 
     routers(){
+        this.app.use('/auth', require('./routers/auth.routers'))
+
         this.app.use('/cups', require('./routers/cups.routers'))
         this.app.use('/eps', require('./routers/eps.routers'))
         this.app.use('/grupoLab', require('./routers/grupLab.routers'))

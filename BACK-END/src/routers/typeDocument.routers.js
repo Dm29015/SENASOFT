@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const typeDocumentController = require("../controller/typeDocument.Controller");
+const typeDocumentController = require("../controllers/typeDocument.Controller");
 
 
 const router = Router();

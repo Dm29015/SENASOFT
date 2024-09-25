@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const professionController = require("../controller/profession.Controller");
+const professionController = require("../controllers/profession.Controller");
 
 
 const router = Router();

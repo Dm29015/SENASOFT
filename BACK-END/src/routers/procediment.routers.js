@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const procedimentController = require("../controller/procedimient.Controller");
+const procedimentController = require("../controllers/procedimient.Controller");
 
 
 const router = Router();
