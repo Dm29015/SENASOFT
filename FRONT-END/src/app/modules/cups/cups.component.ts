@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     TableModule,
-    SHARED_IMPORTS
+    SHARED_IMPORTS,
   ],
   templateUrl: './cups.component.html'
 })
@@ -33,12 +33,7 @@ export class CupsComponent implements OnInit{
     filteredCups: Cups[] = [];
     historyItems: any[] = [];
   
-    colums: { field: string, header: string }[] = [
-      { field: 'id', header: 'ID' },
-      { field: 'codigo', header: 'código' },
-      { field: 'nombre', header: 'Nombre' },
-      { field: 'estado', header: 'Estado' }
-    ];
+    
 
     constructor(
         private cupsService: CupService

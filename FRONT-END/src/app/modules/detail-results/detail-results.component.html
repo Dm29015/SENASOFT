@@ -1,5 +1,78 @@
-<app-crud
-[items]="filteredOrder" 
-  [columns]="colums"
-  [canSeeDetail]="true">
-</app-crud>
+<p-table
+    #dt1
+    [value]="order"
+    [globalFilterFields]="['fecha', 'id_orden', 'id_procedimiento', 'id_prueba', 'id_prueba_opcion', 'res_opcion', 'res_numerico', 'res_texto', 'res_memo', 'num_procesamientos']"
+    selectionMode="single"
+    [(selection)]="fieldOrder"
+    dataKey="id"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rows]="10"
+    [paginator]="true"
+    stateStorage="session"
+    stateKey="statedemo-session">
+        <ng-template pTemplate="caption">
+            <!-- <p-iconField iconPosition="left">
+                <p-inputIcon>
+                    <i class="pi pi-search"></i>
+                </p-inputIcon>
+                <input 
+                    pInputText type="text" 
+                    (input)="filterGlobal($event)" 
+                    placeholder="Global Search" />
+            </p-iconField> -->
+            
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="fecha" style="width:15%">
+                    Fecha <p-sortIcon field="fecha" />
+                </th>
+                <th pSortableColumn="id_orden" style="width:15%">
+                    ID Orden <p-sortIcon field="id_orden" />
+                </th>
+                <th pSortableColumn="id_procedimiento" style="width:15%">
+                    ID Procedimiento <p-sortIcon field="id_procedimiento" />
+                </th>
+                <th pSortableColumn="id_prueba" style="width:15%">
+                    ID Prueba <p-sortIcon field="id_prueba" />
+                </th>
+                <th pSortableColumn="id_prueba_opcion" style="width:15%">
+                    ID Opción Prueba <p-sortIcon field="id_prueba_opcion" />
+                </th>
+                <th pSortableColumn="res_opcion" style="width:15%">
+                    Res. Opción <p-sortIcon field="res_opcion" />
+                </th>
+                <th pSortableColumn="res_numerico" style="width:15%">
+                    Res. Numérico <p-sortIcon field="res_numerico" />
+                </th>
+                <th pSortableColumn="res_texto" style="width:15%">
+                    Res. Texto <p-sortIcon field="res_texto" />
+                </th>
+                <th pSortableColumn="res_memo" style="width:15%">
+                    Res. Memo <p-sortIcon field="res_memo" />
+                </th>
+                <th pSortableColumn="num_procesamientos" style="width:15%">
+                    Num. Procesamientos <p-sortIcon field="num_procesamientos" />
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-result>
+            <tr [pSelectableRow]="result">
+                <!-- <td>{{ result.fecha | date:'short' }}</td> -->
+                <td>{{ result.id_orden }}</td>
+                <td>{{ result.id_procedimiento }}</td>
+                <td>{{ result.id_prueba }}</td>
+                <td>{{ result.id_prueba_opcion }}</td>
+                <td>{{ result.res_opcion }}</td>
+                <td>{{ result.res_numerico }}</td>
+                <td>{{ result.res_texto }}</td>
+                <td>{{ result.res_memo }}</td>
+                <td>{{ result.num_procesamientos }}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="10">No se encontraron resultados.</td>
+            </tr>
+        </ng-template>
+</p-table>

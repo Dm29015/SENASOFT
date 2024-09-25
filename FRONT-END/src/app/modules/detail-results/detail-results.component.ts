@@ -8,6 +8,8 @@ import { SHARED_IMPORTS } from '../../shared/shared-imports';
 import { CRUDComponent } from '../../shared/crud/crud.component';
 import { SharedModule } from 'primeng/api';
 import { TestResultServiceService } from '../test-result/test-result-service.service';
+import { TableModule } from 'primeng/table';
+
 
 import {testResultModel} from '../test-result/testResult.models';
 
@@ -16,7 +18,8 @@ import {testResultModel} from '../test-result/testResult.models';
   standalone: true,
   imports: [
     SharedModule,
-    CRUDComponent
+    CRUDComponent,
+    TableModule
   ],
   templateUrl: './detail-results.component.html',
   styleUrl: './detail-results.component.css'
@@ -29,28 +32,30 @@ export class DetailResultsComponent implements OnInit {
   ){}
 
   order: testResultModel[]=[]
-  filteredOrder: testResultModel[]=[]
+  fieldOrder: testResultModel[]=[]
 
-  colums: { field: string, header: string }[] = [
-    { field: 'id', header: 'id' },
-    // { field: 'idProducto', header: 'Producto' },
-    { field: 'fecha', header: 'fecha' },
-    { field: 'id_orden', header: 'id_orden' },
 
-  ];
+  
+
+  
 
   loadResultOrder() {
     this.resultTest.getAllResultsOrder().subscribe(data => {
       this.order = data
-      this.filteredOrder = data;
+      
     },
     );
   }
 
 
 
-  ngOnInit(): void {
+  ngOnInit(){
       this.loadResultOrder()
   }
+
+
+  // filterGlobal(event: any) {
+  //   this.dt1.filterGlobal(event.target.value, 'contains');
+  // }
 
 }
