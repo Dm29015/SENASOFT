@@ -1,8 +1,8 @@
-<div class="bg-blue-600 p-3 text-white rounded-2xl">
-    <h1 class="text-xl sm:text-2xl font-bold">Bienvenido/a, {{ person[0].nombre1 }} {{ person[0].apellido1 }}</h1>
+<div class="bg-blue-600 p-3 text-white rounded-2xl mt-3">
+    <h1 class="text-xl sm:text-1xl font-bold">Bienvenido/a, {{ userData.nombre1 }} {{ userData.apellido1 }}</h1>
   </div>
   
-  <div class="flex-grow p-3 sm:p-4 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 overflow-hidden" *ngFor="let usuario of person">
+  <div class="flex-grow p-3 sm:p-4 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 overflow-hidden">
     <div class="bg-white p-3 sm:p-4 rounded-3xl shadow-lg border-l-4 border-blue-500">
       <h2 class="text-md sm:text-lg font-semibold text-gray-800 mb-2">Información Personal</h2>
       <div class="">
@@ -10,35 +10,35 @@
           <i class="fas fa-id-card"></i>
           <div>
             <p>Tipo de Identificación</p>
-            <p>{{ usuario.id_tipo_doc }}</p>
+            <p>{{ userData.nombre_doc }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-fingerprint"></i>
           <div>
             <p>Número de Identificación</p>
-            <p>{{ usuario.numero_documento }}</p>
+            <p>{{ userData.numero_documento }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-user"></i>
           <div>
             <p>Nombre Completo</p>
-            <p>{{ usuario.nombre1 }} {{ usuario.nombre2 }} {{ usuario.apellido1 }} {{ usuario.apellido2 }}</p>
+            <p>{{ userData.nombre1 }} {{ userData.nombre2 }} {{ userData.apellido1 }} {{ userData.apellido2 }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-birthday-cake"></i>
           <div>
             <p>Fecha de Nacimiento</p>
-            <p>{{ usuario.fecha_nacimiento | date: 'dd/MM/yyyy' }}</p>
+            <p>{{ userData.fecha_nacimiento | date: 'dd/MM/yyyy' }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-venus-mars"></i>
           <div>
             <p>Sexo Biológico</p>
-            <p>{{ usuario.sexo_biologico ? 'Masculino' : 'Femenino' }}</p>
+            <p>{{ userData.sexo_biologico ? 'Masculino' : 'Femenino' }}</p>
           </div>
         </div>
       </div>
@@ -51,21 +51,21 @@
           <i class="fas fa-map-marker-alt"></i>
           <div>
             <p>Dirección</p>
-            <p>{{ usuario.direccion }}</p>
+            <p>{{ userData.direccion }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-phone"></i>
           <div>
             <p>Teléfono</p>
-            <p>{{ usuario.tel_movil }}</p>
+            <p>{{ userData.tel_movil }}</p>
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-envelope"></i>
           <div>
             <p>Correo Electrónico</p>
-            <p>{{ usuario.email }}</p>
+            <p>{{ userData.email }}</p>
           </div>
         </div>
       </div>

@@ -1,0 +1,33 @@
+.from-blue-500 { background-color: #3B82F6; }
+.to-blue-600 { background-color: #2563EB; }
+
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+/* Aumentar el tamaño de la sombra para destacar las tarjetas */
+.shadow-lg {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para los elementos de información */
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.info-item i {
+  color: #2563EB;
+  font-size: 1.15rem;
+  width: 1.5rem;
+}
+.info-item p:first-of-type {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6B7280;
+}
+.info-item p:last-of-type {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1F2937;
+}
