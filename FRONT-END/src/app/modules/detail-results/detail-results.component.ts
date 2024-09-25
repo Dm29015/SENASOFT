@@ -46,9 +46,4 @@ export class DetailResultsComponent implements OnInit {
       this.loadResultOrder()
   }
 
-
-  // filterGlobal(event: any) {
-  //   this.dt1.filterGlobal(event.target.value, 'contains');
-  // }
-
 }
