@@ -9,7 +9,7 @@ const findTypeIdentificationById = async (id) => {
 };
 
 const findTypeDocumentByName = async (nameDocument) => {
-    return await TypeDocument.findOne({
+    return await typeIdentificationRepository.findOne({
         where: { nombre_documento: nameDocument }
     });
 };

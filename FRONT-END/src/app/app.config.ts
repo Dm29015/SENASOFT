@@ -4,7 +4,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
 import { routes } from './app.routes';
 
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { initializeIcons } from './shared/font-awesome.config';
@@ -13,8 +14,6 @@ import { LoginComponent } from './views/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService } from 'primeng/api';
-
-
 
 initializeIcons();
 
@@ -25,9 +24,15 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch()),
     provideAnimations(),
-    FontAwesomeModule,
-    ReactiveFormsModule,
-    DropdownModule,
+    importProvidersFrom(BrowserAnimationsModule),
+    importProvidersFrom(ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      timeOut: 3000,
+      preventDuplicates: true,
+    })),
+    importProvidersFrom(FontAwesomeModule),
+    importProvidersFrom(ReactiveFormsModule),
+    importProvidersFrom(DropdownModule),
     LoginComponent,
     ConfirmationService
   ]

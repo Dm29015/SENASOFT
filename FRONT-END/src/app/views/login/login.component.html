@@ -1,42 +1,47 @@
 <div class="flex justify-center items-center min-h-screen bg-gradient-to-br from-teal-100 to-blue-200">
-  <div class="w-full max-w-5xl mx-4 md:mx-0 overflow-hidden shadow-xl">
-      <div class="flex flex-col md:flex-row rounded-lg">
-          <div class="w-full md:w-1/2 p-8 bg-white rounded-l-lg">
-              <div class="flex items-center justify-center mb-6">
-                  <fa-icon [icon]="faHeart" class="mr-2 text-pink-500"></fa-icon>
-                  <h1 class="text-3xl font-bold text-teal-600">Portal del Paciente</h1>
-              </div>
-
-              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                  <div class="field">
-                      <label for="idTypes">Tipo de identificación</label>
-                      <p-dropdown [options]="docTypes" formControlName="idType" optionLabel="name" placeholder="Seleccione su tipo de documento"></p-dropdown>
-                  </div>
-
-                  <div class="field">
-                      <label for="idNumber">Número de identificación</label>
-                      <input type="text" pInputText id="idNumber" formControlName="idNumber" placeholder="Ingrese su número de identificación" required autofocus />
-                  </div>
-
-                  <div class="field">
-                      <label for="icondisplay" class="font-bold block mb-2">Fecha de nacimiento</label>
-                      <p-calendar formControlName="birthDate" [iconDisplay]="'input'" [showIcon]="true" inputId="birthDate"></p-calendar>
-                  </div>
-
-                <div class="field">
-                  <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white transition duration-300 ease-in-out transform hover:scale-105">
-                      Acceder a mi información
-                  </button>
+    <div class="w-full max-w-5xl mx-4 md:mx-0 overflow-hidden shadow-xl">
+        <div class="flex flex-col md:flex-row rounded-lg">
+            <div class="w-full md:w-1/2 p-8 bg-white rounded-l-lg">
+                <div class="flex items-center justify-center mb-6">
+                    <fa-icon [icon]="faHeart" class="mr-2 text-pink-500"></fa-icon>
+                    <h1 class="text-3xl font-bold text-teal-600">Portal del Paciente</h1>
                 </div>
-              </form>
-          </div>
-          <div class="w-full md:w-1/2 bg-teal-500 p-8 flex flex-col justify-center items-center text-white rounded-r-lg">
-              <img src="" alt="Cuidado de salud" class="w-32 h-32 mb-6" />
-              <h2 class="text-2xl font-bold mb-4">Bienvenido a su portal de salud</h2>
-              <p class="text-center">
-                  Acceda a su información médica, programe citas y mantenga un seguimiento de su salud, todo en un solo lugar.
-              </p>
-          </div>
-      </div>
+  
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="field">
+                        <label for="tipoDocumento">Tipo de identificación</label>
+                        <p-dropdown [options]="typesId" formControlName="tipoDocumento" optionLabel="nombre_documento" placeholder="Seleccione su tipo de documento"></p-dropdown>
+                    </div>
+  
+                    <div class="field">
+                        <label for="numeroDocumento">Número de identificación</label>
+                        <input type="text" pInputText id="numeroDocumento" formControlName="numeroDocumento" placeholder="Ingrese su número de identificación" required autofocus />
+                    </div>
+  
+                    <div class="field">
+                        <label for="fechaNacimiento" class="font-bold block mb-2">Fecha de nacimiento</label>
+                        <p-calendar formControlName="fechaNacimiento" [iconDisplay]="'input'" [showIcon]="true" inputId="fechaNacimiento"></p-calendar>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="g-recaptcha" data-sitekey="6LfFAE8qAAAAAKN5LA2d40qRIke4hWcRmxCgBlSr"></div>
+                    </div>
+  
+                  <div class="field">
+                    <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white transition duration-300 ease-in-out transform hover:scale-105">
+                        Acceder a mi información
+                    </button>
+                  </div>
+                </form>
+            </div>
+            <div class="w-full md:w-1/2 bg-teal-500 p-8 flex flex-col justify-center items-center text-white rounded-r-lg">
+                <img src="" alt="Cuidado de salud" class="w-32 h-32 mb-6" />
+                <h2 class="text-2xl font-bold mb-4">Bienvenido a su portal de salud</h2>
+                <p class="text-center">
+                    Acceda a su información médica, programe citas y mantenga un seguimiento de su salud, todo en un solo lugar.
+                </p>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
+  
