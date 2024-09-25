@@ -9,7 +9,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { initializeIcons } from './shared/font-awesome.config';
 
-import { LoginComponent } from './modules/login/login.component';
+import { LoginComponent } from './views/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService } from 'primeng/api';

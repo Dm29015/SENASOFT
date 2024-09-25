@@ -1,0 +1,10 @@
+<app-crud 
+[items]="filteredCups" 
+[columns]="columns" 
+[canDelete]="false" 
+[canExport]="true" 
+[canSeeDetail]="true"
+(export)="exportCups()" 
+(detail)="openDetail($event)"
+(search)="searchCups($event)" >
+</app-crud>
