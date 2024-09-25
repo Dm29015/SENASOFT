@@ -6,7 +6,7 @@ import { CupsComponent } from './modules/cups/cups.component';
 
 import { AuthGuard } from './auth/guard';
 import { DetailResultsComponent } from './modules/detail-results/detail-results.component';
-import { ChatComponent } from './views/chat/chat.component';
+import { OrderComponent } from './views/results/results.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -16,10 +16,10 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'orders', component: OrderComponent, canActivate: [AuthGuard] },
+
       { path: 'cups', component: CupsComponent, canActivate: [AuthGuard]},
       { path: 'detailResult', component: DetailResultsComponent, canActivate: [AuthGuard] },
-      { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
-
     ]
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

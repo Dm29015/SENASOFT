@@ -5,36 +5,8 @@
         <i class="bi bi-house mr-2" style="color:#C62828;"></i><a>Inicio</a>
       </li>
 
-      <li>
-        <a (click)="toggleSubmenu('Returns')" class="menu-link">
-          <i class="pi pi-sync mr-2"  style="color:#7B1FA2;"></i>Devoluciones
-          <i class="bi"
-            [ngClass]="{'bi-chevron-right': !isSubmenuOpen('Returns'), 'bi-chevron-down': isSubmenuOpen('Returns')}"
-            style="float:right;"></i>
-        </a>
-        <ul [@submenuAnimation]="getSubmenuState('Returns')" class="submenu">
-          <li class="item" routerLink="/chat" routerLinkActive="active" (click)="closeSidebar()">
-            <i class="pi pi-exclamation-circle mr-2" style="color:salmon;"></i><a>CUPS</a>
-          </li>
-
-          <li class="item" routerLink="/detailResult" routerLinkActive="active" (click)="closeSidebar()">
-            <i class="pi pi-exclamation-circle mr-2" style="color:salmon;"></i><a>detalle</a>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <a (click)="toggleSubmenu('config')" class="menu-link">
-          <i class="bi bi-gear mr-2" style="color:darkcyan;"></i>Configuración
-          <i class="bi"
-            [ngClass]="{'bi-chevron-right': !isSubmenuOpen('config'), 'bi-chevron-down': isSubmenuOpen('config')}"
-            style="float:right;"></i>
-        </a>
-        <ul [@submenuAnimation]="getSubmenuState('config')" class="submenu">
-          <li class="item" routerLink="/roles" routerLinkActive="active" (click)="closeSidebar()">
-            <i class="bi bi-suitcase-lg mr-2" style="color:salmon;"></i><a>Perfil</a>
-          </li>
-        </ul>
+      <li class="item" routerLink="/orders" routerLinkActive="active">
+        <i class="bi bi-house mr-2" style="color:#C62828;"></i><a>Consultar Órdenes</a>
       </li>
 
     </ul>
