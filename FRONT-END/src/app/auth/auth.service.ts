@@ -30,6 +30,11 @@ export class AuthService {
     return of(user ? JSON.parse(user) : null);
   }
 
+  getUserId(): number | null {
+    const user = localStorage.getItem(this.userKey);
+    return user ? JSON.parse(user).id : null;
+  }
+  
   isAuthenticated(): boolean {
     const token = this.getToken();
     if (!token) {

@@ -1,0 +1,43 @@
+<p-table #dt1 [value]="order"
+    [globalFilterFields]="['fecha', 'id_orden', 'id_procedimiento', 'id_prueba', 'id_prueba_opcion', 'res_opcion', 'res_numerico', 'res_texto', 'res_memo', 'num_procesamientos']"
+    selectionMode="single" [(selection)]="fieldOrder" dataKey="id" [tableStyle]="{ 'min-width': '50rem' }" [rows]="10"
+    [paginator]="true" stateStorage="session" stateKey="statedemo-session">
+    <ng-template pTemplate="caption">
+        <!-- <p-iconField iconPosition="left">
+                <p-inputIcon>
+                    <i class="pi pi-search"></i>
+                </p-inputIcon>
+                <input 
+                    pInputText type="text" 
+                    (input)="filterGlobal($event)" 
+                    placeholder="Global Search" />
+            </p-iconField> -->
+
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="fecha" style="width:15%">
+                Fecha de Emisión <p-sortIcon field="fecha" />
+            </th>
+            <th pSortableColumn="id_orden" style="width:15%">
+                Código Documento <p-sortIcon field="id_orden" />
+            </th>
+            <th pSortableColumn="id_procedimiento" style="width:15%">
+                Número de la Orden <p-sortIcon field="id_procedimiento" />
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-result>
+        <tr [pSelectableRow]="result">
+            <!-- <td>{{ result.fecha | date:'short' }}</td> -->
+            <td>{{ result.id_orden }}</td>
+            <td>{{ result.id_procedimiento }}</td>
+            <td>{{ result.id_prueba }}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="10">No se encontraron resultados.</td>
+        </tr>
+    </ng-template>
+</p-table>
