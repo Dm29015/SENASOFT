@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class AuthService {
   private tokenKey: string = 'authToken';
   private userKey: string = 'userData';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   setSession(authResult: { token: string; user: any }): void {
     localStorage.setItem(this.tokenKey, authResult.token);
@@ -16,8 +17,12 @@ export class AuthService {
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem(this.tokenKey); 
+    }
+    return null;
   }
+  
 
    getUserData(): any {
     const user = localStorage.getItem(this.userKey);
