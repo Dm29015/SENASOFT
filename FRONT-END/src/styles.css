@@ -5,6 +5,8 @@
 
 @import "primeicons/primeicons.css";
 
+/* styles.css */
+@import 'ngx-toastr/toastr';
 
 @tailwind components;
 @tailwind utilities;

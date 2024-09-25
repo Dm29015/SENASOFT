@@ -14,11 +14,10 @@ const loginUser = async (typeDocument, numberDocument, dateBirth) => {
 
    const typeDoc = await typeDocRepository.findTypeIdentificationById(typeDocument);
 
+   console.log(typeDoc) 
    if (user.id_tipo_doc != typeDoc.id || user.fecha_nacimiento != dateBirth){
-    
 
-
-    throw new Error(`Información incorrecta.", '\nTabla document: ', ${typeDoc.id}, '\nTabla personas: ', ${user.id_tipo_doc} `);
+    throw new Error("Información incorrecta");
   }
 
   const token = jwt.sign(
