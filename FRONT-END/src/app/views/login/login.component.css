@@ -182,3 +182,9 @@ p {
 .field:last-child {
   margin-right: 0;
 }
+
+.g-recaptcha {
+  margin-top: 20px;
+  transform: scale(1);
+  transform-origin: 0 0;
+}

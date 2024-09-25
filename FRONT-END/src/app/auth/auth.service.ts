@@ -10,24 +10,20 @@ export class AuthService {
 
   constructor(private router: Router) {}
 
-  // Guardar el token y los datos del usuario
   setSession(authResult: { token: string; user: any }): void {
     localStorage.setItem(this.tokenKey, authResult.token);
     localStorage.setItem(this.userKey, JSON.stringify(authResult.user));
   }
 
-  // Obtener el token
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
 
-   // Obtener los datos del usuario
    getUserData(): any {
     const user = localStorage.getItem(this.userKey);
     return user ? JSON.parse(user) : null;
   } 
 
-  // Método para verificar si el usuario está autenticado
   isAuthenticated(): boolean {
     const token = this.getToken();
     if (!token) {
@@ -36,7 +32,7 @@ export class AuthService {
   
     const tokenExpiration = this.getTokenExpirationDate(token);
     if (tokenExpiration && tokenExpiration <= new Date()) {
-      this.logout(); // Token expirado, forzar logout
+      this.logout();
       return false;
     }
   
@@ -49,16 +45,16 @@ export class AuthService {
       return null;
     }
   
-    // Convertir el tiempo UNIX a fecha
     const date = new Date(0);
     date.setUTCSeconds(payload.exp);
     return date;
   }
   
-
-  // Método para hacer logout
   logout(): void {
     localStorage.removeItem(this.tokenKey);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
+    
   }
 }

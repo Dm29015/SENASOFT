@@ -21,6 +21,7 @@ export class LoginService {
     private authService: AuthService
   ) { }
 
+
   login(loginData: any) {
     return this.http.post(`${this.apiUrl}/login`, loginData).subscribe({
       next: (response: any) => {
@@ -33,16 +34,8 @@ export class LoginService {
           this.router.navigate(['/home']);
         }
       },
-      error: (error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          this.toastr.error('Información incorrecta.');
-        } else if (error.status === 404) {
-          this.toastr.error('Usuario no encontrado');
-        } else if (error.status === 0) {
-          this.toastr.error('No se pudo conectar con el servidor. Verifica tu conexión o que el servidor esté en funcionamiento.');
-        } else {
-          this.toastr.error('Ocurrió un error inesperado. Por favor, intenta de nuevo más tarde.');
-        }
+      error: () => {
+       this.handleError;
       }
     });
   }
@@ -50,5 +43,10 @@ export class LoginService {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.error('Ocurrió un error:', error);
+    return throwError('Algo salió mal; por favor, intente nuevamente más tarde.');
   }
 }

@@ -25,7 +25,11 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideAnimations(),
     importProvidersFrom(BrowserAnimationsModule),
-    importProvidersFrom(ToastrModule.forRoot()), // Añade ToastrModule aquí
+    importProvidersFrom(ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      timeOut: 3000,
+      preventDuplicates: true,
+    })),
     importProvidersFrom(FontAwesomeModule),
     importProvidersFrom(ReactiveFormsModule),
     importProvidersFrom(DropdownModule),

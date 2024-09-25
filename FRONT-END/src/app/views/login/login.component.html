@@ -22,6 +22,10 @@
                         <label for="fechaNacimiento" class="font-bold block mb-2">Fecha de nacimiento</label>
                         <p-calendar formControlName="fechaNacimiento" [iconDisplay]="'input'" [showIcon]="true" inputId="fechaNacimiento"></p-calendar>
                     </div>
+
+                    <div class="mb-3">
+                        <div class="g-recaptcha" data-sitekey="6LfFAE8qAAAAAKN5LA2d40qRIke4hWcRmxCgBlSr"></div>
+                    </div>
   
                   <div class="field">
                     <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white transition duration-300 ease-in-out transform hover:scale-105">
@@ -40,22 +44,4 @@
         </div>
     </div>
   </div>
-  
-  <div class="mb-3">
-      <div class="g-recaptcha" data-sitekey="6LcaM04qAAAAAK0eHyp56ogf4_EHxd1gw1SgAz4O"></div>
-  </div>
-  
-  <script>
-      document.getElementById('contactForm').addEventListener('submit', function(e) {
-          e.preventDefault();
-          if (grecaptcha.getResponse() === "") {
-              alert("Por favor, complete el captcha");
-          } else {
-              // Aquí iría el código para enviar el formulario
-              alert("Formulario enviado correctamente");
-              this.reset();
-              grecaptcha.reset();
-          }
-      });
-  </script>
   
