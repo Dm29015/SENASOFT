@@ -11,7 +11,6 @@ const verifyRecaptcha = async (recaptchaToken) => {
   try {
     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`;
     const response = await axios.post(url);
-    console.log('Respuesta de reCAPTCHA:', response.data);
 
     return response.data.success;
   } catch (error) {
