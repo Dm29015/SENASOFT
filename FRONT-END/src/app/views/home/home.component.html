@@ -1,1 +1,110 @@
-<h3>Aterrizaje</h3>
+<div class="bg-blue-600 p-3 text-white rounded-2xl">
+    <h1 class="text-xl sm:text-2xl font-bold">Bienvenido/a, {{ person[0]?.nombre1 }} {{ person[0]?.apellido1 }}</h1>
+  </div>
+  
+  <div class="flex-grow p-3 sm:p-4 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 overflow-hidden" *ngFor="let usuario of person">
+    <div class="bg-white p-3 sm:p-4 rounded-3xl shadow-lg border-l-4 border-blue-500">
+      <h2 class="text-md sm:text-lg font-semibold text-gray-800 mb-2">Información Personal</h2>
+      <div class="">
+        <div class="info-item">
+          <i class="fas fa-id-card"></i>
+          <div>
+            <p>Tipo de Identificación</p>
+            <p>{{ usuario.id_tipo_doc }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-fingerprint"></i>
+          <div>
+            <p>Número de Identificación</p>
+            <p>{{ usuario.numero_documento }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-user"></i>
+          <div>
+            <p>Nombre Completo</p>
+            <p>{{ usuario.nombre1 }} {{ usuario.nombre2 }} {{ usuario.apellido1 }} {{ usuario.apellido2 }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-birthday-cake"></i>
+          <div>
+            <p>Fecha de Nacimiento</p>
+            <p>{{ usuario.fecha_nacimiento | date: 'dd/MM/yyyy' }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-venus-mars"></i>
+          <div>
+            <p>Sexo Biológico</p>
+            <p>{{ usuario.sexo_biologico ? 'Masculino' : 'Femenino' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="bg-white p-3 sm:p-4 rounded-3xl shadow-lg border-l-4 border-teal-500">
+      <h2 class="text-md sm:text-lg font-semibold text-gray-800 mb-2">Información de Contacto</h2>
+      <div class="space-y-1 sm:space-y-2">
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <p>Dirección</p>
+            <p>{{ usuario.direccion }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <p>Teléfono</p>
+            <p>{{ usuario.tel_movil }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <p>Correo Electrónico</p>
+            <p>{{ usuario.email }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .from-blue-500 { background-color: #3B82F6; }
+    .to-blue-600 { background-color: #2563EB; }
+    
+    .bg-gradient-to-br {
+      background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+    }
+  
+    /* Aumentar el tamaño de la sombra para destacar las tarjetas */
+    .shadow-lg {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+  
+    /* Estilos para los elementos de información */
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .info-item i {
+      color: #2563EB;
+      font-size: 1.15rem;
+      width: 1.5rem;
+    }
+    .info-item p:first-of-type {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6B7280;
+    }
+    .info-item p:last-of-type {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1F2937;
+    }
+  </style>
+  
