@@ -1,0 +1,35 @@
+.message-container {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .message-author {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .message-bubble {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .message-bubble.user {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+  }
+  
+  .message-bubble.ia {
+    background-color: #ffffff;
+    border: 1px solid #e5e5ea;
+    align-self: flex-start;
+  }
+  
+  .timestamp {
+    font-size: 0.75rem;
+    color: #999;
+    position: absolute;
+    bottom: -15px;
+    right: 10px;
+  }
