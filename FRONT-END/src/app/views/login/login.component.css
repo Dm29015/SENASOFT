@@ -188,3 +188,101 @@ p {
   transform: scale(1);
   transform-origin: 0 0;
 }
+
+
+/* Estilo para los campos del formulario */
+.input-field {
+  width: 100%; /* Asegura que el campo ocupe todo el ancho disponible */
+  max-width: 350px; /* Puedes ajustar este valor según tu diseño */
+}
+
+.custom-dropdown {
+  border: 1px solid #d1d5db; /* Color gris */
+  border-radius: 0.375rem; /* Bordes redondeados */
+  width: 100%; /* Asegúrate de que el dropdown también tenga 100% de ancho */
+}
+
+.custom-dropdown .ui-dropdown-label {
+  color: #374151; /* Mantener el color del texto */
+}
+
+
+:host ::ng-deep {
+  .p-dropdown {
+      width: 100%;
+  }
+
+  .p-calendar {
+      width: 100%;
+
+      .p-inputtext {
+          width: 100%;
+      }
+  }
+
+  .p-dropdown, .p-inputtext, .p-calendar {
+      max-width: none;
+  }
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+button[type="submit"] {
+  padding: 0.5rem 1rem;
+}
+
+
+
+
+/* Configuración de calendario*/
+
+/* Configuración del calendario */
+
+:host ::ng-deep .p-datepicker {
+  position: absolute !important;
+  top: calc(100% + 5px) !important;
+  left: 0 !important;
+  font-size: 0.9rem;
+  width: auto !important;
+  min-width: 250px;
+  z-index: 1050 !important; /* Asegura que el calendario esté por encima de otros elementos */
+}
+
+/* Ajuste del tamaño del calendario */
+:host ::ng-deep .p-datepicker table td {
+  padding: 0.2rem !important;
+}
+
+:host ::ng-deep .p-datepicker table th {
+  padding: 0.2rem !important;
+}
+
+:host ::ng-deep .p-datepicker .p-datepicker-header {
+  padding: 0.3rem !important;
+}
+
+/* Asegúrate de que el contenedor del calendario esté correctamente posicionado */
+:host ::ng-deep .p-calendar {
+  position: relative;
+}
+
+:host ::ng-deep .p-calendar .p-inputtext {
+  width: 100%;
+}
+
+/* Ajusta el z-index del calendario */
+:host ::ng-deep .p-calendar .p-datepicker {
+  z-index: 1000; /* Asegura que el calendario esté por encima de otros elementos */
+}
+
+/* Evita que los elementos parentales corten el calendario */
+.w-full {
+  overflow: visible !important; /* Permite que el calendario se expanda fuera del contenedor */
+}

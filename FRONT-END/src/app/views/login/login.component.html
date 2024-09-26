@@ -1,47 +1,66 @@
 <div class="flex justify-center items-center min-h-screen bg-gradient-to-br from-teal-100 to-blue-200">
-    <div class="w-full max-w-5xl mx-4 md:mx-0 overflow-hidden shadow-xl">
+    <div class="w-full max-w-5xl mx-4 md:mx-0 shadow-xl">
         <div class="flex flex-col md:flex-row rounded-lg">
             <div class="w-full md:w-1/2 p-8 bg-white rounded-l-lg">
                 <div class="flex items-center justify-center mb-6">
                     <fa-icon [icon]="faHeart" class="mr-2 text-pink-500"></fa-icon>
                     <h1 class="text-3xl font-bold text-teal-600">Portal del Paciente</h1>
                 </div>
-  
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <div class="field">
-                        <label for="tipoDocumento">Tipo de identificación</label>
-                        <p-dropdown [options]="typesId" formControlName="tipoDocumento" optionLabel="nombre_documento" placeholder="Seleccione su tipo de documento"></p-dropdown>
+                    <div class="field mb-4">
+                        <label for="tipoDocumento" class="block mb-2">Tipo de identificación</label>
+                        <p-dropdown [options]="typesId" formControlName="tipoDocumento" optionLabel="nombre_documento"
+                            placeholder="Seleccione su tipo de documento" styleClass="w-full">
+                        </p-dropdown>
+                         <small class="text-red-500" *ngIf="isFieldInvalid('tipoDocumento')">
+                            {{ getErrorMessage('tipoDocumento') }}
+                        </small>
                     </div>
-  
-                    <div class="field">
-                        <label for="numeroDocumento">Número de identificación</label>
-                        <input type="text" pInputText id="numeroDocumento" formControlName="numeroDocumento" placeholder="Ingrese su número de identificación" required autofocus />
+                    <div class="field mb-4">
+                        <label for="numeroDocumento" class="block mb-2">Número de identificación</label>
+                        <input type="text" pInputText id="numeroDocumento" formControlName="numeroDocumento"
+                            placeholder="Ingrese su número de identificación" required autofocus class="w-full" />
+                            <small class="text-red-500" *ngIf="isFieldInvalid('numeroDocumento')">
+                                {{ getErrorMessage('numeroDocumento') }}
+                              </small>
+                        </div>
+                    <div class="field mb-4">
+                        <label for="fechaNacimiento" class="block mb-2">Fecha de nacimiento</label>
+                        <p-calendar 
+                          formControlName="fechaNacimiento"
+                          [showIcon]="true"
+                          inputId="fechaNacimiento"
+                          [style]="{'width':'100%'}"
+                          [inputStyle]="{'width':'100%'}"
+                          dateFormat="dd/mm/yy"
+                          [showOnFocus]="false"
+                          
+                          appendTo="body"  
+                        ></p-calendar>
+                        <small class="text-red-500" *ngIf="isFieldInvalid('fechaNacimiento')">
+                            {{ getErrorMessage('fechaNacimiento') }}
+                          </small>
                     </div>
-  
-                    <div class="field">
-                        <label for="fechaNacimiento" class="font-bold block mb-2">Fecha de nacimiento</label>
-                        <p-calendar formControlName="fechaNacimiento" [iconDisplay]="'input'" [showIcon]="true" inputId="fechaNacimiento"></p-calendar>
-                    </div>
-
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <div class="g-recaptcha" data-sitekey="6LfFAE8qAAAAAKN5LA2d40qRIke4hWcRmxCgBlSr"></div>
                     </div>
-  
-                  <div class="field">
-                    <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white transition duration-300 ease-in-out transform hover:scale-105">
-                        Acceder a mi información
-                    </button>
-                  </div>
+                    <div class="field">
+                        <button type="submit"
+                            class="w-full bg-teal-500 hover:bg-teal-600 text-white transition duration-300 ease-in-out transform hover:scale-105 py-2 rounded">
+                            Acceder a mi información
+                        </button>
+                    </div>
                 </form>
             </div>
-            <div class="w-full md:w-1/2 bg-teal-500 p-8 flex flex-col justify-center items-center text-white rounded-r-lg">
+            <div
+                class="w-full md:w-1/2 bg-teal-500 p-8 flex flex-col justify-center items-center text-white rounded-r-lg">
                 <img src="../../../../public/logo.png" alt="Cuidado de salud" class="w-32 h-32 mb-6" />
                 <h2 class="text-2xl font-bold mb-4">Bienvenido a su portal de salud</h2>
                 <p class="text-center">
-                    Acceda a su información médica, programe citas y mantenga un seguimiento de su salud, todo en un solo lugar.
+                    Acceda a su información médica, programe citas y mantenga un seguimiento de su salud, todo en un
+                    solo lugar.
                 </p>
             </div>
         </div>
     </div>
-  </div>
-  
+</div>
