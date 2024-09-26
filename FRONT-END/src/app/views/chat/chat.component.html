@@ -1,35 +1,29 @@
-<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
-      <div class="p-4 border-b">
-        <h2 class="text-teal-600 text-xl">Preguntas y Recomendaciones</h2>
-        <button  class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+<div class="bg-gray-200 p-2 flex items-center justify-center">
+  <div class="relative bg-white rounded-lg shadow-xl w-full max-w-md mx-auto">
+    <div class="p-4 border-b relative">
+      <h2 class="text-teal-600 text-xl">Preguntas y Recomendaciones</h2>
+    </div>
+    <div class="flex flex-col h-[500px] max-h-[80vh]">
+      <div #scrollArea class="flex-grow p-4 bg-gray-50 rounded-md overflow-y-auto">
+        <div class="flex items-center text-gray-500">
+          <div class="chat-messages">
+            <div *ngFor="let message of messages" class="message">
+              <div class="message-content">
+                <span class="message-author">{{ message.author }}</span>
+                <p [innerHTML]="message.text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center mt-4 p-4 border-t">
+        <input [(ngModel)]="userInput" type="text" placeholder="Escribe tu pregunta aquí..." class="flex-grow mr-2 p-2 border rounded">
+        <button class="bg-teal-500 hover:bg-teal-600 text-white p-2 rounded" (click)="sendMessage()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
           </svg>
         </button>
       </div>
-      <div class="flex flex-col h-[500px]">
-        <div #scrollArea class="flex-grow p-4 bg-gray-50 rounded-md overflow-y-auto">          
-          <div class="flex items-center text-gray-500">
-            <div class="chat-messages">
-              <div *ngFor="let message of messages" class="message">                
-                <div class="message-content">
-                  <span class="message-author">{{ message.author }}</span>
-                  <p [innerHTML]="message.text"></p>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        <div class="flex items-center mt-4 p-4">
-          <input [(ngModel)]="userInput" type="text" placeholder="Escribe tu pregunta aquí..." class="flex-grow mr-2 p-2 border rounded">
-          <button class="bg-teal-500 hover:bg-teal-600 text-white p-2 rounded" (click)="sendMessage()">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
-      </div>
     </div>
   </div>
+</div>
