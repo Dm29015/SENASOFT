@@ -33,7 +33,7 @@ export class DetailResultsComponent implements OnInit {
  
 
   loadResultOrder() {
-    this.resultTest.getAllResultsOrder().subscribe(data => {
+    this.resultTest.getAllResultsOrderResult().subscribe(data => {
       this.order = data
       
     },

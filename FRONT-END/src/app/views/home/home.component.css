@@ -5,6 +5,10 @@
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
 
+.color{
+  background-color: #14B8A6;
+}
+
 /* Aumentar el tamaño de la sombra para destacar las tarjetas */
 .shadow-lg {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);

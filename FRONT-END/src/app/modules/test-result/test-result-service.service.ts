@@ -15,10 +15,14 @@ export class TestResultServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getAllResultsOrder(): Observable<testResultModel[]> {
+  getAllResultsOrderResult(): Observable<testResultModel[]> {
     return this.http.get<testResultModel[]>(this.apiUrl).pipe(
       catchError(this.handleError)
     );
+  }
+  getOrdersByOrder(id: number): Observable<any[]> {
+    // const params = new HttpParams().set('userId', userId.toString());
+    return this.http.get<any[]>(`${this.apiUrl}/user/${id}`);
   }
 
   private handleError(error: HttpErrorResponse) {
