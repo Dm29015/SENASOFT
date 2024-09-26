@@ -1,19 +1,26 @@
-const testRepository = require('../models/pruebas');
+const test = require('../models/pruebas');
 
 const findAllTest = async () => {
-    return await  testRepository.findAll();
+    return await  test.findAll();
 };
 
 const findTestById = async (id) => {
-    return await testRepository.findByPk(id);
+    return await test.findByPk(id);
 };
 
+const findByProcedimient = async (id) => {
+    return await test.findAll({
+        where: { id_procedimiento: id }
+    });
+}
+
 const createTest = async (testData) => {
-    return await testRepository.create(testData);
+    return await test.create(testData);
 };
 
 module.exports = {
     findAllTest,
     findTestById,
-    createTest
+    createTest,
+    findByProcedimient
 };

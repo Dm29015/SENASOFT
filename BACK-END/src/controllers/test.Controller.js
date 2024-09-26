@@ -18,6 +18,16 @@ const getOneTestController = async (req, res) => {
     }
 };
 
+const getTestByProcediment = async (req, res) =>{
+    try {
+        const idProcedimiento = req.params.idProcedimiento;
+        const pruebas = await testService.getTestByProcediment(idProcedimiento);
+        res.status(200).json(pruebas);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    };
+}
+
 const createTestController = async (req, res) => {
     try {
         const newTest = await testService.createTestService(req.body);
@@ -31,5 +41,6 @@ const createTestController = async (req, res) => {
 module.exports = {
     getAllTestController,
     getOneTestController,
-    createTestController
+    createTestController,
+    getTestByProcediment
 };

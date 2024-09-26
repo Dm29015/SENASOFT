@@ -37,6 +37,11 @@ export class OrderComponent implements OnInit {
   selectedOrder!: Order[];
   documents: any[] = [];
 
+  startDate: Date | null = null;
+  endDate: Date | null = null; 
+
+  filteredOrders: any[] = [];
+
   constructor(
     private orderService: OrderService,
     private authService: AuthService,
@@ -80,7 +85,24 @@ export class OrderComponent implements OnInit {
     this.searchQuery = '';
   }
 
-  onSearch(){
-    // Implement search functionality if needed
+  onSearch() {
+    const lowerQuery = this.searchQuery.toLowerCase().trim();
+    
+    this.filteredOrders = this.orders.filter(order => {
+      const documentName = order as Order & { nombre_documento?: string };
+      const document = (documentName.nombre_documento || '').toLowerCase().includes(lowerQuery);
+      
+      const ordenName = order.orden.toString().includes(this.searchQuery);
+      const fecha = order.fecha.toString().includes(this.searchQuery);
+
+
+      return document || ordenName || fecha;
+    });
+
+  if (this.searchQuery === '') {
+    this.filteredOrders = this.orders;
   }
+}
+
+  
 }

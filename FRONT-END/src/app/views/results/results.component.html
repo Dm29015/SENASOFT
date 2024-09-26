@@ -1,7 +1,7 @@
 <div class="card">
-    <p-table #dt [value]="orders" [(selection)]="selectedOrder" dataKey="id" [rowHover]="true" [rows]="10"
-        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    <p-table #dt [value]="filteredOrders.length > 0 || searchQuery ? filteredOrders : orders" [(selection)]="selectedOrder"
+        dataKey="id" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading" [paginator]="true" currentPageReportTemplate="Mostrando {last} de {totalRecords} registros"
         [globalFilterFields]="['id_documento', 'orden', 'fecha']">
 
         <ng-template pTemplate="caption">

@@ -15,6 +15,17 @@ const getOneTestService = async (id) => {
         throw error;
     }
 };
+const getTestByProcediment = async (id) => {
+    try {
+        const pruebas = await testRepository.findByProcedimient(id);
+        if (!pruebas) {
+            throw new Error('No se encontraron pruebas para este procedimiento.');
+        }
+        return pruebas;
+    } catch (error) {
+        throw error;
+    }
+}
 
 const createTestService = async (testData) => {
     try {
@@ -30,5 +41,6 @@ const createTestService = async (testData) => {
 module.exports = {
     getAllTestService,
     getOneTestService,
-    createTestService
+    createTestService,
+    getTestByProcediment
 };
