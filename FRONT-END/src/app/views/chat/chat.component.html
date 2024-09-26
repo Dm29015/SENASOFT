@@ -9,29 +9,22 @@
         </button>
       </div>
       <div class="flex flex-col h-[500px]">
-        <div #scrollArea class="flex-grow p-4 bg-gray-50 rounded-md overflow-y-auto">
-          <div  class="mb-4 flex" >
-            <div  class="w-8 h-8 mr-2 rounded-full bg-teal-500 flex items-center justify-center text-white">
-              AI
-            </div>
-            <div class="p-3 rounded-lg max-w-[80%]" >
-              <p class="mb-1"></p>
-            </div>
-            <div  class="w-8 h-8 ml-2 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
-              TU
-            </div>
-          </div>
+        <div #scrollArea class="flex-grow p-4 bg-gray-50 rounded-md overflow-y-auto">          
           <div class="flex items-center text-gray-500">
-            <svg class="animate-spin h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Escribiendo...
+            <div class="chat-messages">
+              <div *ngFor="let message of messages" class="message">                
+                <div class="message-content">
+                  <span class="message-author">{{ message.author }}</span>
+                  <p [innerHTML]="message.text"></p>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
         <div class="flex items-center mt-4 p-4">
-          <input  placeholder="Escribe tu pregunta aquí..." class="flex-grow mr-2 p-2 border rounded">
-          <button class="bg-teal-500 hover:bg-teal-600 text-white p-2 rounded">
+          <input [(ngModel)]="userInput" type="text" placeholder="Escribe tu pregunta aquí..." class="flex-grow mr-2 p-2 border rounded">
+          <button class="bg-teal-500 hover:bg-teal-600 text-white p-2 rounded" (click)="sendMessage()">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
             </svg>
