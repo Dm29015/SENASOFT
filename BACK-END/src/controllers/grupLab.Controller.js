@@ -28,8 +28,19 @@ const createGrupLabController = async (req, res) => {
     }
 };
 
+const getGruposByOrden = async (req, res) => {
+    try {
+        const idOrden = req.params.idOrden;
+        const grupos = await grupLabService.getGruposByOrden(idOrden);
+        res.status(200).json(grupos);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getAllGrupLabController,
     getOneGrupLabController,
-    createGrupLabController
+    createGrupLabController,
+    getGruposByOrden
 };

@@ -27,8 +27,17 @@ const createProcedimentService = async (procedimentData) => {
     }
 };
 
+const getProcedimientosByGrupo = async (idGrupoLab) => {
+    const procedimientos = await procedimentRepository.findByGrupo(idGrupoLab);
+    if (!procedimientos) {
+        throw new Error('No se encontraron procedimientos para este grupo.');
+    }
+    return procedimientos;
+};
+
 module.exports = {
     getAllProcedimentService,
     getOneProcedimentService,
-    createProcedimentService
+    createProcedimentService,
+    getProcedimientosByGrupo
 };

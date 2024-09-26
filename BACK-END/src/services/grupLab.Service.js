@@ -27,8 +27,17 @@ const createGrupLabService = async (grupLabData) => {
     }
 };
 
+const getGruposByOrden = async (idOrden) => {
+    const grupos = await grupLabRepository.findByOrden(idOrden);
+    if (!grupos) {
+        throw new Error('No se encontraron grupos para esta orden.');
+    }
+    return grupos;
+};
+
 module.exports = {
     getAllGrupLabService,
     getOneGrupLabService,
-    createGrupLabService
+    createGrupLabService,
+    getGruposByOrden
 };

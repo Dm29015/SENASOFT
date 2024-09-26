@@ -7,6 +7,7 @@ const router = Router();
 router
     .get('/', procedimentController.getAllProcedimientsController)
     .get('/:id', procedimentController.getOneProcedimientsController)
+    .get('/grupolab/:idGrupoLab', procedimentController.getProcedimientosByGrupo)
     .post('/', procedimentController.createProcedimientsController)
 
 module.exports = router;

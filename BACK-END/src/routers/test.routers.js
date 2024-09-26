@@ -7,7 +7,7 @@ const router = Router();
 router
     .get('/', testController.getAllTestController)
     .get('/:id', testController.getOneTestController)
-    .get('/:idProcedimiento', testController.getTestByProcediment)
+    .get('/procedimiento/:idProcedimiento', testController.getTestByProcediment)
     .post('/', testController.createTestController)
 
 module.exports = router;

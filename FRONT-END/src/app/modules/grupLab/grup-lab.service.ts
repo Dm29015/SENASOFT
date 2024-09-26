@@ -4,19 +4,18 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { environment } from '../../../enviroment/enviroment';
-import {grupLabModel} from '../grupLab/grupLab.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GrupLabService {
 
-  private apiUrl = `${environment.apiUrl}/grupoLab`;
+  private apiUrl = `${environment.apiUrl}/grupoLab/orden`;
 
   constructor(private http: HttpClient) { }
 
-  getAllResultsOrder(): Observable<grupLabModel[]> {
-    return this.http.get<grupLabModel[]>(this.apiUrl).pipe(
+  getAllResultsByOrder(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }

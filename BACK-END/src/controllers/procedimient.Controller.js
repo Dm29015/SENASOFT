@@ -28,8 +28,19 @@ const createProcedimientsController = async (req, res) => {
     }
 };
 
+const getProcedimientosByGrupo = async (req, res) => {
+    try {
+        const idGrupoLab = req.params.idGrupoLab;
+        const procedimientos = await procemientService.getProcedimientosByGrupo(idGrupoLab);
+        res.status(200).json(procedimientos);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getAllProcedimientsController,
     getOneProcedimientsController,
-    createProcedimientsController
+    createProcedimientsController,
+    getProcedimientosByGrupo
 };

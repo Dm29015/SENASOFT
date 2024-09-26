@@ -28,8 +28,19 @@ const createOrderResultsController = async (req, res) => {
     }
 };
 
+const getResultadosByOrden = async (req, res) => {
+    try {
+        const idOrden = req.params.idOrden;
+        const resultados = await orderResultsService.getResultadosByOrden(idOrden);
+        res.status(200).json(resultados);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getAllOrderResultsController,
     getOneOrderResultsController,
-    createOrderResultsController
+    createOrderResultsController,
+    getResultadosByOrden
 };

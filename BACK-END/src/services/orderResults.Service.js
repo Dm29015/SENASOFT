@@ -27,8 +27,17 @@ const createOrderResultsService = async (orderResultsData) => {
     }
 };
 
+const getResultadosByOrden = async (idOrden) => {
+    const resultados = await orderResultsRepository.findByOrden(idOrden);
+    if (!resultados) {
+        throw new Error('No se encontraron resultados para esta orden.');
+    }
+    return resultados;
+};
+
 module.exports = {
     getAllOrderResultsService,
     getOneOrderResultsService,
-    createOrderResultsService
+    createOrderResultsService,
+    getResultadosByOrden
 };

@@ -22,7 +22,7 @@ export class TestResultServiceService {
   }
   getOrdersByOrder(id: number): Observable<any[]> {
     // const params = new HttpParams().set('userId', userId.toString());
-    return this.http.get<any[]>(`${this.apiUrl}/user/${id}`);
+    return this.http.get<any[]>(`${this.apiUrl}/orden/${id}`);
   }
 
   private handleError(error: HttpErrorResponse) {
