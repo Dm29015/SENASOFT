@@ -1,5 +1,5 @@
 const historyRepository = require('../repositories/history.repository');
-
+const orderRepository = require('../repositories/order.repository')
 const getAllHistoryService = async () => {
     try {
         return await historyRepository.findAllHistory();
@@ -16,6 +16,21 @@ const getOneHistoryService = async (id) => {
     }
 };
 
+const getHistoryByUserId = async (userId) => {
+    try {
+        const historia = await historyRepository.findHistoryByUserId(userId);
+
+        if (!historia) {
+            throw new Error('No existe una historia clínica para este usuario.');
+        }
+
+        return await orderRepository.findOrderByHistoryId(historia.id);
+    } catch (error) {
+        throw error;
+    }
+};
+
+
 const createHistoryService = async (historyData) => {
     try {
         return await historyRepository.createHistory(historyData);
@@ -30,5 +45,6 @@ const createHistoryService = async (historyData) => {
 module.exports = {
     getAllHistoryService,
     getOneHistoryService,
-    createHistoryService
+    createHistoryService,
+    getHistoryByUserId
 };

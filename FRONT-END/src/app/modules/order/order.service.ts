@@ -11,6 +11,8 @@ import { Order } from './order.models';
 })
 export class OrderService {
   private apiUrl = `${environment.apiUrl}/orden`;
+  private apiUrl2 = `${environment.apiUrl}/historia`;
+
 
   constructor(private http: HttpClient) { }
 
@@ -20,9 +22,9 @@ export class OrderService {
     );
   }
 
-  getOrdersByUserId(userId: number): Observable<Order[]> {
-    const params = new HttpParams().set('userId', userId.toString());
-    return this.http.get<Order[]>(this.apiUrl, { params });
+  getOrdersByUser(id: number): Observable<any[]> {
+    // const params = new HttpParams().set('userId', userId.toString());
+    return this.http.get<any[]>(`${this.apiUrl2}/user/${id}`);
   }
 
   createOrder(Order: Order): Observable<Order> {

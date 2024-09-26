@@ -24,7 +24,7 @@ class Server {
         this.app.use('/grupoLab', require('./routers/grupLab.routers'))
         this.app.use('/historia', require('./routers/history.routers'))
         this.app.use('/nivel', require('./routers/level.routers'))
-        this.app.use('/orden', require('./routers/level.routers'))
+        this.app.use('/orden', require('./routers/order.routers'))
         this.app.use('/ResultOrden', require('./routers/orderResults.routers'))
         this.app.use('/personas', require('./routers/person.routers'))
         this.app.use('/procedimiento', require('./routers/procediment.routers'))
