@@ -19,7 +19,7 @@ export class ChatComponent {
 
   userInput: string = '';  // El mensaje actual que el usuario está escribiendo
   messages: Array<{ author: string, text: string }> = [
-    { author: 'Angular Expert', text: '¡Hola! ¿Cómo puedo ayudarte con tus preguntas relacionadas con Angular?' }
+    { author: 'BotHealth - Tu experto en salud', text: '¡Hola! ¿Cómo puedo ayudarte con tus preguntas relacionadas con tu?' }
   ];  // Lista de mensajes entre el usuario y la IA
 
   constructor(private chatService: ChatService) {}
