@@ -14,6 +14,7 @@ import { TypeIdentification } from '../../modules/typeIdentification/typeId.mode
 import { TypeIdentificationService } from '../../modules/typeIdentification/typeId.service';
 import { AuthService } from '../../auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { ValidationService } from '../../shared/validators/validations.service';
 
 
 declare var grecaptcha: any;
@@ -51,13 +52,32 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private typeIdService: TypeIdentificationService,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private validationService: ValidationService,
   ) {
     this.loginForm = this.fb.group({
-      tipoDocumento: ['', Validators.required],
-      numeroDocumento: ['', Validators.required],
-      fechaNacimiento: ['', Validators.required]
+      tipoDocumento: ['', validationService.getValidatorsForField("login", "tipoDocumento")],
+      numeroDocumento: ['', validationService.getValidatorsForField("login", "numeroDocumento")],
+      fechaNacimiento: ['', validationService.getValidatorsForField("login", "fechaNacimiento")]
     });
+  }
+
+  isFieldInvalid(fieldName: string): boolean {
+    const field = this.loginForm.get(fieldName);
+    return !!(field?.invalid && (field.touched || field.dirty));
+  }  
+
+  getErrorMessage(fieldName: string): string {
+    const control = this.loginForm.get(fieldName);
+    if (control?.errors) {
+      const errorKey = Object.keys(control.errors)[0];
+      return this.validationService.getErrorMessage('login', fieldName, errorKey);
+    }
+    return '';
+  }
+
+  private markFormFieldsAsTouched() {
+    Object.values(this.loginForm.controls).forEach(control => control.markAsTouched());
   }
 
   loadTypeId() {
@@ -73,6 +93,15 @@ export class LoginComponent implements OnInit {
 
   // Método que se activa al enviar el formulario
   onSubmit(): void {
+    if (this.loginForm.valid) {
+      console.log('Formulario válido:', this.loginForm.value);
+      // Realizar la lógica de envío
+    } else {
+      console.log('Formulario inválido');
+      this.markFormFieldsAsTouched(); // Marca todos los campos como tocados para mostrar los errores
+    }
+
+
     if (grecaptcha.getResponse() === '') {
       this.toastr.warning('Por favor, completa el CAPTCHA');
     } else {
