@@ -3,10 +3,16 @@ import { SHARED_IMPORTS } from '../../shared/shared-imports';
 import { CRUDComponent } from '../../shared/crud/crud.component';
 import { SharedModule } from 'primeng/api';
 import { TableModule } from 'primeng/table';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { OrderService } from '../../modules/order/order.service';
 import { AuthService } from '../../auth/auth.service';
 import { Order } from '../../modules/order/order.models';
+import { TypeDocumentService } from '../../modules/typeDocument/typeDocument.service';
+import { forkJoin } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -15,29 +21,66 @@ import { Order } from '../../modules/order/order.models';
     SHARED_IMPORTS,
     SharedModule,
     CRUDComponent,
-    TableModule
+    TableModule,
+    IconFieldModule,
+    InputIconModule,
+    InputTextModule,
+    RouterModule
   ],
   templateUrl: './results.component.html',
+  styleUrls: ['./results.component.css']
 })
 export class OrderComponent implements OnInit {
-  order: Order[] = [];
-  fieldOrder: Order[] = [];
+  searchQuery = '';
+  loading: boolean = true;
+  orders: Order[] = [];
+  selectedOrder!: Order[];
+  documents: any[] = [];
 
   constructor(
     private orderService: OrderService,
-    private authService: AuthService
+    private authService: AuthService,
+    private documentService: TypeDocumentService
   ) { }
 
   loadOrders() {
     const userId = this.authService.getUserId();
     if (userId !== null) {
-      this.orderService.getOrdersByUserId(userId).subscribe(data => {
-        this.order = data;
+      forkJoin({
+        orders: this.orderService.getOrdersByUser(userId),
+        documents: this.documentService.getAllTypeDocument()
+      }).subscribe(({ orders, documents }) => {
+        this.documents = documents;
+
+        // Map the orders to include the document names instead of IDs
+        this.orders = orders.map(order => {
+          const document = this.documents.find(doc => doc.id === order.id_documento);
+          return {
+            ...order,
+            nombre_documento: document ? document.nombre_documento : 'Desconocido'
+          };
+        });
+
+        this.loading = false;
+      }, error => {
+        console.error("Error fetching data: ", error);
+        this.loading = false;
       });
+    } else {
+      console.warn("User ID is null");
     }
   }
 
   ngOnInit() {
     this.loadOrders();
+  }
+
+  clear(dt: any) {
+    dt.clear();
+    this.searchQuery = '';
+  }
+
+  onSearch(){
+    // Implement search functionality if needed
   }
 }

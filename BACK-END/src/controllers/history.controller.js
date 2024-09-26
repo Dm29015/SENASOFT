@@ -18,6 +18,15 @@ const getOneHistoryController = async (req, res) => {
     }
 };
 
+const getHistoryByUserId = async (req,res) => {
+    try {
+        const orders = await historyService.getHistoryByUserId(req.params.id);
+        res.status(200).json(orders);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener las órdenes.', error: error.message });
+    }
+};
+
 const createHistoryController = async (req, res) => {
     try {
         const newhistory = await historyService.createHistoryService(req.body);
@@ -31,5 +40,6 @@ const createHistoryController = async (req, res) => {
 module.exports = {
     getAllHistoryController,
     getOneHistoryController,
+    getHistoryByUserId,
     createHistoryController
 };

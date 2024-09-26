@@ -16,6 +16,14 @@ const getOneOrderService = async (id) => {
     }
 };
 
+const getOrderByUserId = async (id) => {
+    try {
+        return await orderRepository.findOrderByHistoryId(id);
+    } catch (error) {
+        throw error;
+    }
+};
+
 const createOrderService = async (levelData) => {
     try {
         return await orderRepository.createOrder(levelData);
@@ -30,5 +38,6 @@ const createOrderService = async (levelData) => {
 module.exports = {
     getAllOrderService,
     getOneOrderService,
+    getOrderByUserId,
     createOrderService
 };

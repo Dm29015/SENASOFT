@@ -7,6 +7,7 @@ const router = Router();
 router
     .get('/', historyController.getAllHistoryController)
     .get('/:id', historyController.getOneHistoryController)
+    .get('/user/:id', historyController.getHistoryByUserId)
     .post('/', historyController.createHistoryController)
 
 module.exports = router;
