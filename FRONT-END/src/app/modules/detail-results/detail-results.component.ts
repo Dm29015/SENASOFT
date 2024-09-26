@@ -5,6 +5,12 @@ import { SharedModule } from 'primeng/api';
 
 import { TestResultServiceService } from '../test-result/test-result-service.service';
 import { TableModule } from 'primeng/table';
+import {GrupLabService} from '../grupLab/grup-lab.service'
+import {ProcedimentService} from '../procediment/procediment.service'
+import {TestServicecService} from '../test/test-service.service'
+
+
+
 
 
 import {testResultModel} from '../test-result/testResult.models';
@@ -25,7 +31,10 @@ export class DetailResultsComponent implements OnInit {
 
 
   constructor(
-    private resultTest: TestResultServiceService 
+    private resultTest: TestResultServiceService,
+    private grupService: GrupLabService,
+    private procedimentSErvice: ProcedimentService,
+    private testservice: TestServicecService 
   ){}
 
   order: testResultModel[]=[]
